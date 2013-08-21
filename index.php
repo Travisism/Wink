@@ -1,7 +1,8 @@
 <?php
 // Wink Micro-Router
 $path = array_values(array_filter(explode('/', $_SERVER['PATH_INFO'])));
-$controller = preg_replace('/[\s\W]+/','-', strtolower($path[0]));
+$controller = preg_replace('/[^a-zA-Z0-9\s.]/', '', strtolower($path[0]));
+$controller = preg_replace('/[\s\W]+/','-', $controller);
 $controller = (empty($controller)) ? 'home' : $controller;
 ?>
 <!doctype html>
